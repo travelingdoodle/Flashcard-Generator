@@ -1,0 +1,22 @@
+{
+    "options":[
+      {
+        "front": "Who was the first president of the United States?",
+        "back": "George Washington",
+        "text": "George Washington was the first president of the United States.",
+        "cloze": "George Washington"  
+      },
+      {
+        "front": "What spacecraft has traveled the furthest into space?",
+        "back": "Voyager 2",
+        "text": "The Voyager 2 has traveled further than any other space craft.",
+        "cloze": "Voyager 2"  
+      },
+      {
+        "front": "How many tacos should you eat?",
+        "back": "all of the tacos",
+        "text": "You should eat all of the tacos.",
+        "cloze": "all of the tacos" 
+      }
+    ]
+  }
