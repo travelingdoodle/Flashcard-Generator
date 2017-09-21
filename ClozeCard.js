@@ -10,9 +10,6 @@ i = 0;
 // The constructor should throw or log an error when the cloze deletion does not appear in the input text.
 // Use prototypes to attach these methods, wherever possible.
 
-
-
-
 if(process.argv[2] === "cloze") {
     clozeGame();
   }
@@ -40,16 +37,13 @@ if(process.argv[2] === "cloze") {
     });
   }
 
-
-
-
 function ClozeCard (text, cloze) {
     if (this instanceof ClozeCard) {
-        this.teext = text;
+        this.text = text;
         this.cloze = cloze;
         this.partialText = function (){
             if(this.text.includes(this.cloze)) {
-                return this.fullText.replace(this.close, "...");
+                return this.fullText.replace(this.cloze, "...");
             } else {
                 console.log("ERRRRR, DAWG!")
             }
