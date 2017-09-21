@@ -10,49 +10,51 @@ i = 0;
 // The constructor should throw or log an error when the cloze deletion does not appear in the input text.
 // Use prototypes to attach these methods, wherever possible.
 
-if(process.argv[2] === "cloze") {
-    clozeGame();
-  }
-  
-  function clozeGame() {
-    var askQuestion = new ClozeCard(questions.options[i].text, questions.options[i].cloze);
-    
-    inquirer.prompt([
-      {
-        name: "answer",
-        message: askQuestion.partial
-      }
-    ]).then(function (answers) {
-      if(answers.answer === askQuestion.cloze) {
-        console.log("Correct!");
-        console.log("");
-      } else {
-        console.log("Incorrect! " + questions.options[i].text);
-        console.log("");
-      }
-      if(i < questions.options.length - 1) {
-        i+=1;
-        clozeGame();
-      }
-    });
-  }
+if (process.argv[2] === "cloze") {
+  clozeGame();
+}
 
-function ClozeCard (text, cloze) {
-    if (this instanceof ClozeCard) {
-        this.text = text;
-        this.cloze = cloze;
-        this.partialText = function (){
-            if(this.text.includes(this.cloze)) {
-                return this.fullText.replace(this.cloze, "...");
-            } else {
-                console.log("ERRRRR, DAWG!")
-            }
+function clozeGame() {
+  var askQuestion = new ClozeCard(questions.options[i].text, questions.options[i].cloze);
 
-        };
-    } else {
-        return new ClozeCard (text, cloze);
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'answer',
+      message: askQuestion.partial
     }
-};
+  ]).then(function (answers) {
+    if (answers.answer === askQuestion.cloze) {
+      console.log("Correct!");
+      console.log("");
+    } else {
+      console.log("Incorrect! " + questions.options[i].text);
+      console.log("");
+    }
+    if (i < questions.options.length - 1) {
+      i += 1;
+      clozeGame();
+    }
+  });
+}
 
-module.exports = clozeGame;
+function ClozeCard(text, cloze) {
+  if (this instanceof ClozeCard) {
+    this.text = text;
+    this.cloze = cloze;
+  } else {
+    return new ClozeCard(text, cloze);
+  }
+  this.partial = function () {
+    if (text.includes(cloze)) {
+      return text.replace(cloze, "...");
+      // var partial = text.replace(cloze, "...");
+      console.log(partial);
+    } else {
+      console.log("ERRRRR, DAWG!")
+    }
+  };
+
+}
+module.exports = ClozeCard;
 

@@ -3,7 +3,7 @@
 var cloze = require("./ClozeCard");
 var inquirer = require('inquirer');
 var questions = require("./questions.json");
-i = 0;
+var i = 0;
 // The constructor should accept two arguments: front and back.
 // The constructed object should have a front property that contains the text on the front of the card.
 // The constructed object should have a back property that contains the text on the back of the card.
@@ -29,7 +29,7 @@ if(process.argv[2] === "basic") {
         console.log("");
       }
       if(i < questions.options.length - 1) {
-        i+=1;
+        i++;
         basicGame();
       }
     });
