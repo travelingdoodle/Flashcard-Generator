@@ -10,5 +10,5 @@ __ClozeCard:__
     Question: `? ... was the first president of The United States.`
     Answer: George Washington
 ### To Run:
-`npm install inquirer`
+`npm install`
 `node BasicCard.js [cloze | basic]`
